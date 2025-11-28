@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather CLI — консольное приложение для получения погоды &mdash; документация Weather CLI 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9ca2116e"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=cd1d70c9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Weather CLI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Weather CLI — консольное приложение для получения погоды</a></li>
+<li><a class="reference internal" href="#module-weather.api">Модули</a><ul>
+<li><a class="reference internal" href="#weather.api.WeatherAPI"><code class="docutils literal notranslate"><span class="pre">WeatherAPI</span></code></a><ul>
+<li><a class="reference internal" href="#weather.api.WeatherAPI.get_coordinates"><code class="docutils literal notranslate"><span class="pre">WeatherAPI.get_coordinates()</span></code></a></li>
+<li><a class="reference internal" href="#weather.api.WeatherAPI.get_weather"><code class="docutils literal notranslate"><span class="pre">WeatherAPI.get_weather()</span></code></a></li>
+<li><a class="reference internal" href="#weather.api.WeatherAPI.get_weather_by_city"><code class="docutils literal notranslate"><span class="pre">WeatherAPI.get_weather_by_city()</span></code></a></li>
+<li><a class="reference internal" href="#weather.api.WeatherAPI.get_weather_by_coords"><code class="docutils literal notranslate"><span class="pre">WeatherAPI.get_weather_by_coords()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#weather.api.get_weather_description"><code class="docutils literal notranslate"><span class="pre">get_weather_description()</span></code></a></li>
+<li><a class="reference internal" href="#weather.cache.WeatherCache"><code class="docutils literal notranslate"><span class="pre">WeatherCache</span></code></a><ul>
+<li><a class="reference internal" href="#weather.cache.WeatherCache.get"><code class="docutils literal notranslate"><span class="pre">WeatherCache.get()</span></code></a></li>
+<li><a class="reference internal" href="#weather.cache.WeatherCache.set"><code class="docutils literal notranslate"><span class="pre">WeatherCache.set()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#weather.commands.format_weather_output"><code class="docutils literal notranslate"><span class="pre">format_weather_output()</span></code></a></li>
+<li><a class="reference internal" href="#weather.commands.get_weather_command"><code class="docutils literal notranslate"><span class="pre">get_weather_command()</span></code></a></li>
+<li><a class="reference internal" href="#weather.parser.create_parser"><code class="docutils literal notranslate"><span class="pre">create_parser()</span></code></a></li>
+<li><a class="reference internal" href="#weather.main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Weather CLI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Weather CLI — консольное приложение для получения погоды</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="weather-cli">
+<h1>Weather CLI — консольное приложение для получения погоды<a class="headerlink" href="#weather-cli" title="Ссылка на этот заголовок"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="module-weather.api">
+<span id="id1"></span><h1>Модули<a class="headerlink" href="#module-weather.api" title="Ссылка на этот заголовок"></a></h1>
+<p>Модуль для работы с API Open-Meteo.</p>
+<p>Содержит класс WeatherAPI для получения координат и текущей погоды,
+а также вспомогательную функцию преобразования кода погоды в текст.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="weather.api.WeatherAPI">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">weather.api.</span></span><span class="sig-name descname"><span class="pre">WeatherAPI</span></span><a class="reference internal" href="_modules/weather/api.html#WeatherAPI"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.api.WeatherAPI" title="Ссылка на это определение"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Клиент для работы с Open-Meteo API с поддержкой кэширования.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="weather.api.WeatherAPI.get_coordinates">
+<span class="sig-name descname"><span class="pre">get_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">city_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/api.html#WeatherAPI.get_coordinates"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.api.WeatherAPI.get_coordinates" title="Ссылка на это определение"></a></dt>
+<dd><p>Получает географические координаты по названию города.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>city_name</strong> (<em>str</em>) – Название города (регистр не важен).</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Словарь с ключами latitude, longitude, name, country</dt><dd><p>или None, если город не найден.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict | None</p>
+</dd>
+<dt class="field-even">Исключение<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – При сетевых ошибках или проблемах с API.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="weather.api.WeatherAPI.get_weather">
+<span class="sig-name descname"><span class="pre">get_weather</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">city_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/api.html#WeatherAPI.get_weather"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.api.WeatherAPI.get_weather" title="Ссылка на это определение"></a></dt>
+<dd><p>Получает текущую погоду по координатам.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latitude</strong> (<em>float</em>) – Широта.</p></li>
+<li><p><strong>longitude</strong> (<em>float</em>) – Долгота.</p></li>
+<li><p><strong>city_name</strong> (<em>str</em><em> | </em><em>None</em>) – Название города для отображения (опционально).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Данные о погоде (temperature, windspeed, weathercode и др.).</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Исключение<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – При сетевых ошибках или проблемах с API.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="weather.api.WeatherAPI.get_weather_by_city">
+<span class="sig-name descname"><span class="pre">get_weather_by_city</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">city_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/api.html#WeatherAPI.get_weather_by_city"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.api.WeatherAPI.get_weather_by_city" title="Ссылка на это определение"></a></dt>
+<dd><p>Получает погоду по названию города.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>city_name</strong> (<em>str</em>) – Название города.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Данные о погоде.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Исключение<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Если город не найден или произошла ошибка API.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="weather.api.WeatherAPI.get_weather_by_coords">
+<span class="sig-name descname"><span class="pre">get_weather_by_coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitude</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/api.html#WeatherAPI.get_weather_by_coords"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.api.WeatherAPI.get_weather_by_coords" title="Ссылка на это определение"></a></dt>
+<dd><p>Получает погоду по прямым координатам с валидацией.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latitude</strong> (<em>float</em>) – Широта от -90 до 90.</p></li>
+<li><p><strong>longitude</strong> (<em>float</em>) – Долгота от -180 до 180.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Данные о погоде.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Исключение<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Если координаты вне допустимого диапазона.</p></li>
+<li><p><strong>Exception</strong> – При ошибках API.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="weather.api.get_weather_description">
+<span class="sig-prename descclassname"><span class="pre">weather.api.</span></span><span class="sig-name descname"><span class="pre">get_weather_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weathercode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/weather/api.html#get_weather_description"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.api.get_weather_description" title="Ссылка на это определение"></a></dt>
+<dd><p>Преобразует числовой код погоды Open-Meteo в человекочитаемое описание.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weathercode</strong> (<em>int</em>) – Код погоды по классификации WMO.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Описание погоды на русском языке или «Неизвестно».</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-weather.cache">Модуль кэширования данных о погоде на диск в JSON-файл.</p>
+<p>Кэш имеет TTL (время жизни) — по умолчанию 1 час.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="weather.cache.WeatherCache">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">weather.cache.</span></span><span class="sig-name descname"><span class="pre">WeatherCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'weather_cache.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttl_hours</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/cache.html#WeatherCache"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.cache.WeatherCache" title="Ссылка на это определение"></a></dt>
+<dd><p>Кэш погоды с хранением на диске и автоматической очисткой устаревших записей.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="weather.cache.WeatherCache.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/cache.html#WeatherCache.get"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.cache.WeatherCache.get" title="Ссылка на это определение"></a></dt>
+<dd><p>Получает данные из кэша по ключу, если они не устарели.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Данные или None, если кэш пустой/просрочен.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="weather.cache.WeatherCache.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/cache.html#WeatherCache.set"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.cache.WeatherCache.set" title="Ссылка на это определение"></a></dt>
+<dd><p>Сохраняет данные в кэш с текущей меткой времени.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Ключ кэша.</p></li>
+<li><p><strong>data</strong> (<em>Any</em>) – Данные (должны быть JSON-serializable).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-weather.commands">Модуль обработки команд приложения.</p>
+<p>Содержит функции для получения погоды и красивого форматирования вывода.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="weather.commands.format_weather_output">
+<span class="sig-prename descclassname"><span class="pre">weather.commands.</span></span><span class="sig-name descname"><span class="pre">format_weather_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/weather/commands.html#format_weather_output"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.commands.format_weather_output" title="Ссылка на это определение"></a></dt>
+<dd><p>Форматирует данные о погоде в красивый текстовый вывод.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weather_data</strong> (<em>dict</em>) – Словарь с данными от API.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Многострочная строка с рамкой и информацией о погоде.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="weather.commands.get_weather_command">
+<span class="sig-prename descclassname"><span class="pre">weather.commands.</span></span><span class="sig-name descname"><span class="pre">get_weather_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/commands.html#get_weather_command"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.commands.get_weather_command" title="Ссылка на это определение"></a></dt>
+<dd><p>Выполняет команду получения погоды по городу или координатам.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> – Объект argparse.Namespace с параметрами командной строки.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>Отформатированная строка с данными о погоде или сообщение об ошибке.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-weather.parser">Модуль создания парсера аргументов командной строки.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="weather.parser.create_parser">
+<span class="sig-prename descclassname"><span class="pre">weather.parser.</span></span><span class="sig-name descname"><span class="pre">create_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/parser.html#create_parser"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.parser.create_parser" title="Ссылка на это определение"></a></dt>
+<dd><p>Создаёт и возвращает настроенный объект argparse.ArgumentParser.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Парсер с двумя взаимоисключающими группами аргументов.</p>
+</dd>
+<dt class="field-even">Тип результата<span class="colon">:</span></dt>
+<dd class="field-even"><p>argparse.ArgumentParser</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-weather.main">Консольное приложение для получения текущей погоды.</p>
+<p>Использует Open-Meteo API с кэшированием результатов.
+Запуск: python -m weather –city Москва</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="weather.main.main">
+<span class="sig-prename descclassname"><span class="pre">weather.main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/weather/main.html#main"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#weather.main.main" title="Ссылка на это определение"></a></dt>
+<dd><p>Точка входа в приложение.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Lexys. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

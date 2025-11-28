@@ -1,0 +1,22 @@
+{
+  "coords_москва": {
+    "timestamp": "2025-11-28T18:45:51.519222",
+    "data": {
+      "latitude": 55.75222,
+      "longitude": 37.61556,
+      "name": "Москва",
+      "country": "Россия"
+    }
+  },
+  "weather_55.75222_37.61556": {
+    "timestamp": "2025-11-28T18:45:51.972762",
+    "data": {
+      "temperature": 2.3,
+      "windspeed": 8.0,
+      "winddirection": 262,
+      "weathercode": 3,
+      "time": "2025-11-28T18:45",
+      "city": "Москва, Россия"
+    }
+  }
+}
